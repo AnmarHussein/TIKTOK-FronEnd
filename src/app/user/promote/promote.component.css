@@ -1,0 +1,241 @@
+@import url(../../../assets/libs/css/cssUserProfile.css);
+
+.pricingTable {
+  text-align: center;
+  background: #fff;
+  margin: 0 -15px;
+  box-shadow: 0 0 10px #ababab;
+  padding-bottom: 40px;
+  border-radius: 10px;
+  color: #cad0de;
+  transform: scale(1);
+  transition: all 0.5s ease 0s;
+}
+
+.pricingTable:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.pricingTable .pricingTable-header {
+  padding: 40px 0;
+  background: #f5f6f9;
+  border-radius: 10px 10px 50% 50%;
+  transition: all 0.5s ease 0s;
+}
+
+.pricingTable:hover .pricingTable-header {
+  background: #ff9624;
+}
+
+.pricingTable .pricingTable-header i {
+  font-size: 50px;
+  color: #858c9a;
+  margin-bottom: 10px;
+  transition: all 0.5s ease 0s;
+}
+
+.pricingTable .price-value {
+  font-size: 35px;
+  color: #ff9624;
+  transition: all 0.5s ease 0s;
+}
+
+.pricingTable .month {
+  display: block;
+  font-size: 14px;
+  color: #cad0de;
+}
+
+.pricingTable:hover .month,
+.pricingTable:hover .price-value,
+.pricingTable:hover .pricingTable-header i {
+  color: #fff;
+}
+
+.pricingTable .heading {
+  font-size: 15px;
+  color: #ff9624;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.pricingTable .pricing-content ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.pricingTable .pricing-content ul li {
+  line-height: 30px;
+  color: #a7a8aa;
+}
+
+.pricingTable .pricingTable-signup button {
+  display: inline-block;
+  font-size: 15px;
+  color: #fff;
+  padding: 10px 35px;
+  border-radius: 20px;
+  background: #ffa442;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  border: none;
+}
+
+.pricingTable .pricingTable-signup button:hover {
+  box-shadow: 0 0 10px #ffa442;
+}
+
+.pricingTable.green .heading,
+.pricingTable.green .price-value {
+  color: #40c952;
+}
+
+.pricingTable.green .pricingTable-signup button,
+.pricingTable.green:hover .pricingTable-header {
+  background: #40c952;
+}
+
+.pricingTable.green .pricingTable-signup button:hover {
+  box-shadow: 0 0 10px #40c952;
+}
+
+.pricingTable.blue:hover .price-value,
+.pricingTable.green:hover .price-value,
+.pricingTable.red:hover .price-value {
+  color: #fff;
+}
+
+@media screen and (max-width: 990px) {
+  .pricingTable {
+    margin: 0 0 20px;
+  }
+}
+
+/* ------------------------------------------------------------------------------------ */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.Add-payment .card {
+  border: none;
+  max-width: 450px;
+  border-radius: 15px;
+  margin-top:10px; 
+  padding: 35px;
+  padding-bottom: 20px !important;
+}
+.Add-payment .heading {
+  color: #c1c1c1;
+  font-size: 14px;
+  font-weight: 500;
+}
+.Add-payment img {
+  transform: translate(160px, -10px);
+}
+.Add-payment img:hover {
+  cursor: pointer;
+}
+.Add-payment .text-warning {
+  font-size: 12px;
+  font-weight: 500;
+  color: #edb537 !important;
+}
+#cno {
+  transform: translateY(-10px);
+}
+.Add-payment input {
+  border-bottom: 1.5px solid #e8e5d2 !important;
+  font-weight: bold;
+  border-radius: 0;
+  border: 0;
+}
+.Add-payment .form-group input:focus {
+  border: 0;
+  outline: 0;
+}
+.Add-payment .col-sm-5 {
+  padding-left: 90px;
+}
+.Add-payment .btn {
+  background: #f3a002 !important;
+  border: none;
+  border-radius: 30px;
+}
+.Add-payment .btn:focus {
+  box-shadow: none;
+}
+
+/* Video One Step*/
+.Video-step-one video {
+  width: 100%;
+  height: 392px;
+}
+
+.Video-step-one ul {
+  list-style-type: none;
+}
+.Video-step-one ul li {
+  display: inline-block;
+}
+
+.Video-step-one a {
+  color: #000;
+}
+
+.Video-step-one .f-right {
+  float: right;
+}
+.Video-step-one .post {
+  box-shadow: 0px 0px 18px #ccc;
+  width: 350px;
+}
+.Video-step-one .post-header {
+  display: flex;
+  padding: 20px 10px;
+}
+.Video-step-one .post-header .author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.Video-step-one .post-header .meta {
+  margin-left: 20px;
+  width: 100%;
+}
+.Video-step-one .post-header .meta .name {
+  margin-bottom: 5px;
+  text-transform: capitalize;
+}
+.Video-step-one .post-header .meta .location {
+  color: #999;
+  text-transform: capitalize;
+  font-size: 13px;
+}
+.Video-step-one .post-header .meta .location i {
+  margin-right: 5px;
+}
+.Video-step-one .post-body .content {
+  padding: 20px;
+}
+.Video-step-one .post-body .content .title {
+  margin-bottom: 15px;
+  color: #000;
+  font-weight: 600;
+}
+.Video-step-one .post-body .content p {
+  line-height: 1.7;
+  color: #444;
+}
+.Video-step-one .post-footer {
+  display: flex;
+  padding: 20px;
+}
+.Video-step-one .post-footer ul:last-child {
+  margin-left: auto;
+}
+.Video-step-one .post-footer ul:last-child li {
+  margin-right: 10px;
+}
+.Video-step-one .post-footer i {
+  margin-right: 5px;
+}

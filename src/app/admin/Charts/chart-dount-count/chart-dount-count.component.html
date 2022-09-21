@@ -1,0 +1,16 @@
+<!-- ============================================================== -->
+<div class="card">
+  <h5 class="card-header">Revenue by Gender</h5>
+  <div class="card-body">
+    <div style="height: 201px">
+      <apx-chart
+        *ngIf="chartOptionspie"
+        [series]="chartOptionspie.series"
+        [chart]="chartOptionspie.chart"
+        [labels]="chartOptionspie.labels"
+        [responsive]="chartOptionspie.responsive"
+      ></apx-chart>
+    </div>
+  </div>
+</div>
+<!-- ============================================================== -->

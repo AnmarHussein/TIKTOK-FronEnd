@@ -1,0 +1,15 @@
+<button
+  class="button-follwe"
+  
+  *ngIf="auth.isUserAuthntication() && followBack == 0"
+  (click)="AddFollow()"
+>
+  Follow
+</button>
+<button
+  class="button-follwe"
+  *ngIf="!auth.isUserAuthntication() && followBack == 0"
+  (click)="ShowLoginForm()"
+>
+  Follow
+</button>

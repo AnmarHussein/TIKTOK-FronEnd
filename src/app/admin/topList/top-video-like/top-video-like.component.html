@@ -1,0 +1,20 @@
+<div class="card">
+  <h5 class="card-header">Top vidoe like</h5>
+  <div class="card-body p-0">
+    <ul class="social-sales list-group list-group-flush">
+      <li
+        *ngFor="let video of video5list"
+        class="list-group-item social-sales-content"
+      >
+        <span
+          ><img
+            src="../../../../assets/images/{{ video.posterpath }}"
+            style="height: 40px; width: 40px; border-radius: 100%" /></span
+        ><span class="social-sales-name"> {{ video.title }}</span
+        ><span class="social-sales-count text-dark"
+          >{{ video.count }} like</span
+        >
+      </li>
+    </ul>
+  </div>
+</div>

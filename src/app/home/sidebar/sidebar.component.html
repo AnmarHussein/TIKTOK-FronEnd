@@ -1,0 +1,52 @@
+<div class="btns">
+  <a routerLink="/home"
+    ><i class="fas fa-home"></i>
+    <span *ngIf="home.HomePageTag != undefined">{{
+      home.HomePageTag.captur1
+    }}</span></a
+  >
+  <a href="#"
+    ><i class="fas fa-users"></i>
+    <span *ngIf="home.HomePageTag != undefined">{{
+      home.HomePageTag.captur2
+    }}</span></a
+  >
+  <a routerLink="/AllLive"
+    ><i class="fas fa-video"></i>
+    <span *ngIf="home.HomePageTag != undefined">{{
+      home.HomePageTag.captur3
+    }}</span></a
+  >
+</div>
+<div class="login" *ngIf="home.HomePageTag != undefined">
+  <p *ngIf="home.HomePageTag != undefined">{{ home.HomePageTag.pargraf1 }}</p>
+  <button *ngIf="!auth.isUserAuthntication()" (click)="ShowLoginForm()">
+    {{ home.HomePageTag.button1 }}
+  </button>
+  <button *ngIf="auth.isUserAuthntication()">Welcom In TikTok</button>
+</div>
+<div class="accounts">
+  <p *ngIf="home.HomePageTag != undefined">{{ home.HomePageTag.pargraf2 }}</p>
+  <div class="user" *ngFor="let suggest of home.SuggestUser">
+    <img src="../../../assets/images/{{ suggest.imagePath }}" alt="avatar" />
+    <h6 class="username">{{ suggest.userName }}</h6>
+    <div class="span-count">
+      <span>{{ suggest.count }}</span>
+    </div>
+  </div>
+</div>
+<div class="links">
+  <div>
+    <div class="link" *ngFor="let link1 of home.LinkTag">
+      <a href="{{ link1.urlPath }}" *ngIf="!link1.isNav">{{ link1.name }}</a>
+    </div>
+    <div class="link">
+      <a routerLink="/home/ContactUs">ContactUs</a>
+    </div>
+    <div class="copyright">
+      <h6 *ngIf="home.HomePageTag != undefined">
+        &copy; {{ home.HomePageTag.copyRigth }}
+      </h6>
+    </div>
+  </div>
+</div>

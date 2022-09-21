@@ -1,0 +1,378 @@
+<div class="dashboard-main-wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader  -->
+        <!-- ============================================================== -->
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+              <h3 class="mb-2">Dashboard Admin</h3>
+              <p class="pageheader-text">
+                Proin placerat ante duiullam scelerisque a velit ac porta, fusce
+                sit amet vestibulum mi. Morbi lobortis pulvinar quam.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+
+        <div class="container">
+          <div class="profile">
+            <div class="profile-header">
+              <div class="profile-header-cover"></div>
+              <div class="profile-header-content">
+                <div class="profile-header-img" *ngIf="userInfo">
+                  <img
+                    src="../../../../assets/images/{{ userInfo.imagePath }}"
+                    alt=""
+                  />
+                </div>
+                <h1>@ {{ userInfo.userName }}</h1>
+              </div>
+            </div>
+
+            <div class="profile-container">
+              <div class="profile-content">
+                <mat-tab-group mat-align-tabs="start">
+                  <mat-tab label="Followers">
+                    <div
+                      class="tab-pane fade active show"
+                      id="profile-followers"
+                    >
+                      <div class="list-group">
+                        <div
+                          *ngFor="let followers of this.profile.followers"
+                          class="list-group-item d-flex align-items-center"
+                        >
+                          <img
+                            src="../../../../assets/images/{{
+                              followers.imagePath
+                            }}"
+                            alt=""
+                            width="50px"
+                            class="rounded-sm ml-n2"
+                          />
+                          <div class="flex-fill pl-3 pr-3">
+                            <div>
+                              <a href="#" class="text-dark font-weight-600">{{
+                                followers.userName
+                              }}</a>
+                            </div>
+                            <div class="text-muted fs-13px">
+                              {{ followers.email }}
+                            </div>
+                          </div>
+                          <a href="#" class="btn btn-outline-primary">Follow</a>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Following">
+                    <div
+                      class="tab-pane fade active show"
+                      id="profile-followers"
+                    >
+                      <div class="list-group">
+                        <div
+                          *ngFor="let following of this.profile.following"
+                          class="list-group-item d-flex align-items-center"
+                        >
+                          <img
+                            src="../../../../assets/images/{{
+                              following.imagePath
+                            }}"
+                            alt=""
+                            width="50px"
+                            class="rounded-sm ml-n2"
+                          />
+                          <div class="flex-fill pl-3 pr-3">
+                            <div>
+                              <a href="#" class="text-dark font-weight-600">{{
+                                following.userName
+                              }}</a>
+                            </div>
+                            <div class="text-muted fs-13px">
+                              {{ following.email }}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Information">
+                    <div class="panel">
+                      <div class="bio-graph-heading">
+                        {{ userInfo.title }}
+                      </div>
+                      <div class="panel-body bio-graph-info">
+                        <div class="bio-row">
+                          <p>
+                            <span>Full Name </span>: {{ userInfo.fullName }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>User Name </span>: {{ userInfo.userName }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>Gender </span>:
+                            {{ userInfo.genderId == 1 ? "Meal" : "Femael" }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>Birthday</span>: {{ userInfo.bDate | date }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p><span>Email </span>: {{ userInfo.email }}</p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>Is Block </span>:
+                            {{
+                              userInfo.isBlock == 0
+                                ? "No"
+                                : "Yes plz Contact With admin "
+                            }}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Videos" style="overflow: hidden">
+                    <div class="profile-video" style="overflow: hidden">
+                      <div class="row" style="overflow: hidden">
+                        <div *ngFor="let video of profile.videos" class="col-4">
+                          <div class="post">
+                            <div class="post-info">
+                              <div class="user">
+                                <div>
+                                  <p>{{ video.title }}</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="post-content">
+                              <video
+                                muted
+                                controls
+                                disablepictureinpicture
+                                controlslist="nodownload noplaybackrate"
+                              >
+                                <source
+                                  src="../../../../assets/videos/{{
+                                    video.videoPath
+                                  }}"
+                                  type="video/mp4"
+                                />
+                              </video>
+                              <div class="video-icons">
+                                <a (click)="OpenDialogLikes(video.id)"
+                                  ><i class="fas fa-heart fa-lg"></i
+                                  ><span>{{ video.countlike }}</span></a
+                                >
+                                <a (click)="OpenDialogComment(video.id)"
+                                  ><i class="fas fa-comment-dots fa-lg"></i
+                                  ><span>{{ video.countreplay }}</span></a
+                                >
+                                <a href="#"
+                                  ><i class="fas fa-share fa-lg"></i>
+                                  <span>150</span></a
+                                >
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Activity">
+                    <div class="Activity">
+                      <div class="panel panel-body">
+                        <!-- Timeline -->
+                        <!--===================================================-->
+                        <div class="timeline">
+                          <!-- Timeline header -->
+                          <div class="timeline-header">
+                            <div class="timeline-header-title bg-success">
+                              Now
+                            </div>
+                          </div>
+
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon">
+                                <img
+                                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                  alt="Profile picture"
+                                />
+                              </div>
+                              <div class="timeline-time">30 Min ago</div>
+                            </div>
+                            <div class="timeline-label">
+                              <p class="mar-no pad-btm">
+                                <a href="#" class="btn-link text-semibold"
+                                  >Maria J.</a
+                                >
+                                shared an image
+                              </p>
+                              <div class="img-holder">
+                                <img
+                                  src="https://bootdey.com/img/Content/avatar/avatar1.png"
+                                  alt="Image"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon bg-danger">
+                                <i class="fa fa-building fa-lg"></i>
+                              </div>
+                              <div class="timeline-time">2 Hours ago</div>
+                            </div>
+                            <div class="timeline-label">
+                              <h4 class="mar-no pad-btm">
+                                <a href="#" class="text-danger">Job Meeting</a>
+                              </h4>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon">
+                                <img
+                                  src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                  alt="Profile picture"
+                                />
+                              </div>
+                              <div class="timeline-time">3 Hours ago</div>
+                            </div>
+                            <div class="timeline-label">
+                              <p class="mar-no pad-btm">
+                                <a href="#" class="btn-link text-semibold"
+                                  >Lisa D.</a
+                                >
+                                commented on <a href="#">The Article</a>
+                              </p>
+                              <blockquote class="bq-sm bq-open">
+                                Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt.
+                              </blockquote>
+                            </div>
+                          </div>
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon bg-purple">
+                                <i class="fa fa-check fa-lg"></i>
+                              </div>
+                              <div class="timeline-time">5 Hours ago</div>
+                            </div>
+                            <div class="timeline-label">
+                              <img
+                                class="img-xs img-circle"
+                                src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                                alt="Profile picture"
+                              />
+                              <a href="#" class="btn-link text-semibold"
+                                >Bobby Marz</a
+                              >
+                              followed you.
+                            </div>
+                          </div>
+
+                          <!-- Timeline header -->
+                          <div class="timeline-header">
+                            <div class="timeline-header-title bg-dark">
+                              Yesterday
+                            </div>
+                          </div>
+
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon bg-info">
+                                <i class="fa fa-envelope fa-lg"></i>
+                              </div>
+                              <div class="timeline-time">15:45</div>
+                            </div>
+                            <div class="timeline-label">
+                              <h4 class="text-info mar-no pad-btm">
+                                Lorem ipsum dolor sit amet
+                              </h4>
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon bg-success">
+                                <i class="fa fa-thumbs-up fa-lg"></i>
+                              </div>
+                              <div class="timeline-time">13:27</div>
+                            </div>
+                            <div class="timeline-label">
+                              <img
+                                class="img-xs img-circle"
+                                src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                alt="Profile picture"
+                              />
+                              <a href="#" class="btn-link text-semibold"
+                                >Michael Both</a
+                              >
+                              Like <a href="#">The Article</a>
+                            </div>
+                          </div>
+                          <div class="timeline-entry">
+                            <div class="timeline-stat">
+                              <div class="timeline-icon"></div>
+                              <div class="timeline-time">11:27</div>
+                            </div>
+                            <div class="timeline-label">
+                              <p>
+                                Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit, sed diam nonummy nibh euismod
+                                tincidunt.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                        <!--===================================================-->
+                        <!-- End Timeline -->
+                      </div>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- end wrapper  -->
+<!-- ============================================================== -->

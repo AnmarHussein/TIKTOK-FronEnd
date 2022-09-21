@@ -1,0 +1,217 @@
+.comment {
+  width: 500px;
+  margin: auto;
+}
+
+.comment .img-sm {
+  width: 46px;
+  height: 46px;
+  border-radius: 40%;
+  margin-right: 14px;
+}
+
+.comment .panel {
+  position: relative;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.075);
+  border-radius: 0;
+  border: 0;
+  margin-bottom: 15px;
+}
+
+.comment .panel .panel-footer,
+.comment .panel > :last-child {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.comment .panel .panel-heading,
+.comment .panel > :first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.comment .panel-body {
+  padding: 25px 20px;
+}
+
+.comment .media-block .media-left {
+  display: block;
+  float: left;
+}
+
+.comment .media-block .media-right {
+  float: right;
+}
+
+.comment .media-block .media-body {
+  display: block;
+  overflow: hidden;
+  width: auto;
+}
+
+.comment .middle .media-left,
+.comment .middle .media-right,
+.comment .middle .media-body {
+  vertical-align: middle;
+}
+
+.comment .thumbnail {
+  border-radius: 0;
+  border-color: #e9e9e9;
+}
+
+.comment .tag.tag-sm,
+.comment .btn-group-sm > .tag {
+  padding: 5px 10px;
+}
+
+.comment .tag:not(.label) {
+  background-color: #fff;
+  padding: 6px 12px;
+  border-radius: 2px;
+  border: 1px solid #cdd6e1;
+  font-size: 12px;
+  line-height: 1.42857;
+  vertical-align: middle;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+}
+.comment .text-muted,
+.comment a.text-muted:hover,
+.comment a.text-muted:focus {
+  color: #acacac;
+}
+.comment .text-sm {
+  font-size: 0.9em;
+}
+.comment .text-5x,
+.comment .text-4x,
+.comment .text-5x,
+.comment .text-2x,
+.comment .text-lg,
+.comment .text-sm,
+.comment .text-xs {
+  line-height: 1.25;
+}
+
+.comment .btn-trans {
+  background-color: transparent;
+  border-color: transparent;
+  color: #929292;
+}
+.insert-comment {
+  position: absolute;
+  top: 22px;
+  left: 88%;
+}
+.comment .btn-icon {
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.comment .btn-sm,
+.comment .btn-group-sm > .btn,
+.comment .btn-icon.btn-sm {
+  padding: 5px 10px !important;
+}
+
+.comment .mar-top {
+  margin-top: 15px;
+}
+::ng-deep .mat-dialog-container {
+  overflow: auto !important;
+}
+
+/*imput file */
+/********** File Input Style starts here ********/
+.box {
+  position: absolute;
+  top: 18px;
+  left: 77%;
+}
+.comment .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.comment .inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  /* 20px */
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  /* 10px 20px */
+}
+
+.comment .no-js .inputfile + label {
+  display: none;
+}
+
+.comment .inputfile:focus + label,
+.comment .inputfile.has-focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.comment .inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  /* 4px */
+  margin-right: 0.25em;
+  /* 4px */
+}
+
+/* style 4 */
+
+.comment .inputfile-4 + label {
+  color: #d3394c;
+}
+
+.comment .inputfile-4:focus + label,
+.comment .inputfile-4.has-focus + label,
+.comment .inputfile-4 + label:hover {
+  color: #722040;
+}
+
+.comment .inputfile-4 + label figure {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #d3394c;
+  display: block;
+  padding: 2px;
+  margin: 0 auto 10px;
+}
+
+.comment .inputfile-4:focus + label figure,
+.comment .inputfile-4.has-focus + label figure,
+.comment .inputfile-4 + label:hover figure {
+  background-color: #722040;
+}
+
+.comment .inputfile-4 + label svg {
+  width: 100%;
+  height: 100%;
+  fill: #f1e5e6;
+}
+.image-replay {
+  width: 100%;
+  height: 100%;
+}
+
+.video-replay {
+  width: 100%;
+  height: 300px;
+}

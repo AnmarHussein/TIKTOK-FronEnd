@@ -1,0 +1,12 @@
+<a *ngIf="auth.isUserAuthntication() && LikeInVideo == 0" (click)="AddLike()"
+  ><i class="fas fa-heart fa-lg" id="iconId"></i
+  ><span class="span-Like">{{ countLike }}</span></a
+>
+<a *ngIf="auth.isUserAuthntication() && LikeInVideo == 1" (click)="AddLike()"
+  ><i class="fas fa-heart fa-lg colo-red" id="iconId"></i
+  ><span class="span-Like">{{ countLike }}</span></a
+>
+<a *ngIf="!auth.isUserAuthntication()" (click)="OpenLoginForm()"
+  ><i class="fas fa-heart fa-lg" id="iconId"></i
+  ><span class="span-Like">{{ countLike }}</span></a
+>

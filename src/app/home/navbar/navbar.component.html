@@ -1,0 +1,64 @@
+<header class="header-container" *ngIf="home.HomePageTag != undefined">
+  <nav class="navbar">
+    <img
+      class="logo"
+      *ngIf="home.HomePageTag != undefined"
+      src="../../../assets/images/{{ home.HomePageTag.navLogo }}"
+      alt="Tiktok"
+    />
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search accounts and videos"
+      />
+      <button class="search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+
+    <div class="nav-right">
+      <button (click)="ShowCreateLive()" class="upload-btn" *ngIf="home.HomePageTag != undefined">
+        <i class="fa fa-plus ml-1" aria-hidden="true"></i>
+        {{ home.HomePageTag.navButton1 }}
+      </button>
+      <button
+        *ngIf="!authServes.isUserAuthntication()"
+        class="login-btn"
+        (click)="ShowLoginForm()"
+      >
+        {{ home.HomePageTag.navButton2 }}
+      </button>
+      <a
+        *ngIf="authServes.isUserAuthntication()"
+        class="btn-shaeredli dropdown-toggle"
+        type="button"
+        id="dropdownMenuButton22"
+        data-toggle="dropdown"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <img
+          *ngIf="user != undefined"
+          class="navbar-mune-img"
+          src="../../../assets/images/{{ user!.imagePath! }}"
+        />
+      </a>
+      <div
+        class="dropdown-menu navbar-mune-1"
+        aria-labelledby="dropdownMenuButton22"
+      >
+        <a class="dropdown-item" style="cursor: pointer" routerLink="/user"
+          >Show Profile</a
+        >
+        <a class="dropdown-item" style="cursor: pointer">Contact US</a>
+        <a
+          class="dropdown-item"
+          style="cursor: pointer"
+          (click)="authServes.LogOut()"
+          >LogOut</a
+        >
+      </div>
+    </div>
+  </nav>
+</header>

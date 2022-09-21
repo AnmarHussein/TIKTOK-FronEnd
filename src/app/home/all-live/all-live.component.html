@@ -1,0 +1,61 @@
+<div class="container-nav">
+  <app-navbar></app-navbar>
+  <main>
+    <div class="left">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="right">
+      <!-- ============================================================== -->
+      <!-- wrapper  -->
+      <!-- ============================================================== -->
+      <div class="dashboard-wrapper">
+        <div class="dashboard-finance">
+          <div>
+            <div class="main-content">
+              <!-- Header -->
+              <!-- Header -->
+              <div
+                *ngFor="let item of AllChannelActive; let i = index"
+                class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center mb-3"
+                style="
+                  height: 367px;
+                  width: 100% !important;
+                  background-image: url(../../../assets/images/{{item.data.imagePath}});
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-10">
+                      <h1 class="display-2 text-white">
+                        {{ item.channel.name }} {{ item.channel.count }}
+                      </h1>
+                      <h1 class="display-4 text-white">
+                        {{ item.data.userName }}
+                      </h1>
+                      <a
+                        routerLink="/live/room/{{ item.channel.name }}/2"
+                        class="btn btn-info"
+                        >Go To Live</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!AllChannelActive">No data Here</div>
+            </div>
+
+            <div class="row"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end wrapper  -->
+    <!-- ============================================================== -->
+  </main>
+</div>

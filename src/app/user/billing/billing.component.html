@@ -1,0 +1,655 @@
+<div class="">
+  <app-sidebar></app-sidebar>
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div>
+        <app-header></app-header>
+        <!-- Page content -->
+        <div class="container-fluid py-4">
+          <div class="billing-col">
+            <div *ngIf="userProfile.countSeales" class="col-xl-6 mb-xl-0">
+              <div class="card bg-transparent shadow-xl">
+                <div
+                  class="overflow-hidden position-relative border-radius-xl"
+                  style="
+                    background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/card-visa.jpg');
+                  "
+                >
+                  <span class="mask bg-gradient-dark"></span>
+                  <div class="card-body position-relative z-index-1 p-3">
+                    <i class="fas fa-wifi text-white p-2"></i>
+                    <h5 class="text-white mt-4 mb-5 pb-2 fs-3">
+                      {{ userProfile.countSeales.cardNumber | creditDebitMask }}
+                    </h5>
+                    <div class="d-flex">
+                      <div class="d-flex">
+                        <div class="me-4">
+                          <p class="text-white text-sm opacity-8 mb-0">
+                            Card Holder
+                          </p>
+                          <h6 class="text-white mb-0">
+                            {{ userProfile.countSeales.cardName }}
+                          </h6>
+                        </div>
+                        <div>
+                          <p class="text-white text-sm opacity-8 mb-0">
+                            Expires
+                          </p>
+                          <h6 class="text-white mb-0">
+                            {{ userProfile.countSeales.expireDate }}
+                          </h6>
+                        </div>
+                      </div>
+                      <div
+                        class="ms-auto w-20 d-flex align-items-end justify-content-end"
+                      >
+                        <img
+                          class="w-60 mt-2"
+                          src="../../../assets/cridetCard.jpg"
+                          alt="logo"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="billing-col">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header mx-4 p-3 text-center">
+                      <div
+                        class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg"
+                      >
+                        <i
+                          class="fa fa-money opacity-10"
+                          aria-hidden="true"
+                        ></i>
+                      </div>
+                    </div>
+                    <div class="card-body pt-0 p-3 text-center">
+                      <h6 class="text-center mb-0">Total</h6>
+                      <span class="text-xs">total pay promote</span>
+                      <hr class="horizontal dark my-3" />
+                      <h5 class="mb-0">
+                        {{ userProfile.countSeales.sumSeales | currency }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mt-md-0">
+                  <div class="card">
+                    <div class="card-header mx-4 p-3 text-center">
+                      <div
+                        class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg"
+                      >
+                        <i class="fab fa-paypal opacity-10"></i>
+                      </div>
+                    </div>
+                    <div class="card-body pt-0 p-3 text-center">
+                      <h6 class="text-center mb-0">Count</h6>
+                      <span class="text-xs">count pay promote</span>
+                      <hr class="horizontal dark my-3" />
+                      <h5 class="mb-0">
+                        {{ userProfile.countSeales.countSeales }}
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6" *ngIf="userProfile.promoteByUser">
+              <div class="card h-100">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                      <h6 class="mb-0">Invoices</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body p-3 pb-0">
+                  <ul class="list-group">
+                    <li
+                      *ngFor="let promot of userProfile.promoteByUser"
+                      class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg"
+                    >
+                      <div class="d-flex flex-column">
+                        <h6 class="mb-1 text-dark font-weight-bold text-sm">
+                          {{ promot.name }} {{ promot.title }}
+                        </h6>
+                        <span class="text-xs"
+                          >#tiktokPromote-{{ promot.id }}
+                          {{ promot.createAt | dateAsAgo }}</span
+                        >
+                      </div>
+                      <div class="d-flex align-items-center text-sm">
+                        {{ promot.amount | currency }}
+
+                        <a
+                          style="cursor: pointer"
+                          class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"
+                          (click)="InvoiceTemplate(promot)"
+                        >
+                          <i class="fas fa-file-pdf text-lg me-1"></i>
+
+                          Open PDF
+                        </a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-12 mb-lg-0 mb-4">
+              <div class="card mt-4">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div
+                      class="col-6 d-flex align-items-center"
+                      *ngIf="userProfile.visaCard"
+                    >
+                      <h6 class="mb-0">Payment Method</h6>
+                    </div>
+                    <div class="col-6 text-end">
+                      <a
+                        (click)="OpenDialogAddVisaCard()"
+                        class="btn bg-gradient-dark mb-0"
+                        href="javascript:;"
+                        ><i class="fas fa-plus"></i>&nbsp;&nbsp;Add New Card</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body p-3">
+                  <div class="row">
+                    <div class="col-md-6 mb-md-0 mb-4">
+                      <div
+                        *ngFor="let card of userProfile.visaCard"
+                        class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row"
+                      >
+                        <img
+                          class="w-10 me-3 mb-0"
+                          src="../../../assets/cridetCard.jpg"
+                          alt="logo"
+                        />
+                        <h6 class="mb-0">
+                          {{ card.cardNumber | creditDebitMask }}
+                        </h6>
+                        <i
+                          class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
+                          data-bs-toggle="tooltip"
+                          data-bs-placement="top"
+                          title="Edit Card"
+                          (click)="OpenDialogEditCard(card)"
+                        ></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              *ngIf="ShowPdfInvoice && promote"
+              #invoicShow
+              id="invoicShow"
+              class="col-md-12 mb-lg-0 mb-4"
+            >
+              <div class="card mt-4">
+                <div class="card-header pb-0 p-3">
+                  <div class="row">
+                    <div
+                      class="col-6 d-flex align-items-center"
+                      *ngIf="promote"
+                    >
+                      <h6 class="mb-0">Invoice</h6>
+                    </div>
+                    <div class="col-6 text-end">
+                      <a
+                        style="cursor: pointer"
+                        class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"
+                        (click)="generatePdf(1)"
+                      >
+                        <i class="fas fa-file-pdf text-lg me-1"></i>
+                        Show PDF
+                      </a>
+
+                      <a
+                        style="cursor: pointer"
+                        class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"
+                        (click)="generatePdf(2)"
+                      >
+                        <i class="fas fa-file-pdf text-lg me-1"></i>
+                        Donlwoad PDF
+                      </a>
+                      <a
+                        style="cursor: pointer"
+                        class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"
+                        (click)="generatePdf(3)"
+                      >
+                        <i class="fas fa-file-pdf text-lg me-1"></i>
+                        Send PDF
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body p-3 mt-5" *ngIf="promote">
+                  <div class="container-pdf px-0" #templatePdfInvoice>
+                    <div class="row">
+                      <div class="col-12 col-lg-12">
+                        <div class="row">
+                          <div class="col-4">
+                            <div class="text-150">
+                              <img
+                                src="../../../assets/Tiktok_logo_text.svg.png"
+                              />
+                            </div>
+                          </div>
+                          <div class="col-4">
+                            <h1
+                              class="text-center page-title text-secondary-d1"
+                            >
+                              Welcom To Invoice
+                            </h1>
+                          </div>
+                          <div class="col-4">
+                            <h1 class="text-right page-title text-secondary-d1">
+                              Invoice
+                              <small class="page-info">
+                                <i class="fa fa-angle-double-right text-80"></i>
+                                ID: #TikTok-{{ promote.id }}
+                              </small>
+                            </h1>
+                          </div>
+                        </div>
+                        <!-- .row -->
+
+                        <hr class="row brc-default-l1 mx-n1 mb-4" />
+
+                        <div class="row">
+                          <div class="col-sm-6">
+                            <div>
+                              <span class="text-sm text-grey-m2 align-middle"
+                                >To:</span
+                              >
+                              <span
+                                class="text-600 text-110 text-blue align-middle"
+                                ><img
+                                  style="width: 100px; height: 100px"
+                                  src="../../../assets/images/{{
+                                    promote.imagePath
+                                  }}"
+                                />{{ promote.userName }}</span
+                              >
+                            </div>
+                            <div class="text-grey-m2">
+                              <div class="my-1">
+                                Email:anmar.hussein.okour@gmail.com
+                              </div>
+                              <div class="my-1">
+                                <i
+                                  class="fa fa-phone fa-flip-horizontal text-secondary"
+                                ></i>
+                                <b class="text-600"
+                                  >card :{{
+                                    promote.cardNumber | creditDebitMask
+                                  }}</b
+                                >
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+
+                          <div
+                            class="text-95 col-sm-6 align-self-start d-sm-flex justify-content-end"
+                          >
+                            <hr class="d-sm-none" />
+                            <div class="text-grey-m2">
+                              <div
+                                class="mt-1 mb-2 text-secondary-m1 text-600 text-125"
+                              >
+                                Invoice
+                              </div>
+
+                              <div class="my-2">
+                                <i
+                                  class="fa fa-circle text-blue-m2 text-xs mr-1"
+                                ></i>
+                                <span class="text-600 text-90">ID:</span>
+                                #TikTok-{{ promote.id }}
+                              </div>
+
+                              <div class="my-2">
+                                <i
+                                  class="fa fa-circle text-blue-m2 text-xs mr-1"
+                                ></i>
+                                <span class="text-600 text-90"
+                                  >Issue Date:</span
+                                >
+                                {{ promote.createAt | date }}
+                              </div>
+
+                              <div class="my-2">
+                                <i
+                                  class="fa fa-circle text-blue-m2 text-xs mr-1"
+                                ></i>
+                                <span class="text-600 text-90">Status:</span>
+                                <span
+                                  class="badge badge-warning badge-pill px-25"
+                                  >paying</span
+                                >
+                              </div>
+                            </div>
+                          </div>
+                          <!-- /.col -->
+                        </div>
+
+                        <div class="mt-4">
+                          <div
+                            class="row text-600 text-white bgc-default-tp1 py-25"
+                          >
+                            <div class="d-none d-sm-block col-1">#</div>
+                            <div class="col-9 col-sm-5">Promote Type</div>
+                            <div class="d-none d-sm-block col-4 col-sm-2">
+                              Video Title
+                            </div>
+                            <div class="d-none d-sm-block col-sm-2">
+                              Card Number
+                            </div>
+                            <div class="col-2">Amount</div>
+                          </div>
+
+                          <div class="text-95 text-secondary-d3">
+                            <div class="row mb-2 mb-sm-0 py-25">
+                              <div class="d-none d-sm-block col-1">1</div>
+                              <div class="col-9 col-sm-5">
+                                {{ promote.name }}
+                              </div>
+                              <div class="d-none d-sm-block col-2">
+                                {{ promote.title }}
+                              </div>
+                              <div class="d-none d-sm-block col-2 text-95">
+                                {{ promote.cardNumber | creditDebitMask }}
+                              </div>
+                              <div class="col-2 text-secondary-d2">
+                                {{ promote.amount | currency }}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="row border-b-2 brc-default-l2"></div>
+                          <div class="row mt-3 d-flex justify-content-end">
+                            <div
+                              class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last"
+                            >
+                              <div
+                                class="row my-2 align-items-center bgc-primary-l3 p-2"
+                              >
+                                <div class="col-7 text-right">Total Amount</div>
+                                <div class="col-5">
+                                  <span
+                                    class="text-150 text-success-d3 opacity-2"
+                                    >{{ promote.amount | currency }}</span
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="d-flex justify-content-center">
+                            <span class="text-secondary-d1 text-105"
+                              >This Document Created By Tiktok Only</span
+                            >
+                          </div>
+                          <hr />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>
+
+<ng-template #_addCardTemplate>
+  <h1 mat-dialog-title>Add New CridtCard</h1>
+  <div mat-dialog-content>
+    <div class="example-container">
+      <form action="" [formGroup]="createCard">
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Card Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="cardName"
+            placeholder="fName lName "
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['cardName'].hasError('min') &&
+              !this.createCard.controls['cardName'].hasError('required')
+            "
+          >
+            Please enter a valid card Name above $1
+          </mat-error>
+          <mat-error
+            *ngIf="this.createCard.controls['cardName'].hasError('required')"
+          >
+            card Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Card Number</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="cardNumber"
+            placeholder="0000-0000-0000-0000"
+            pattern="^[0-9]{4}([-]?[0-9]{4}){3}$"
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['cardNumber'].hasError('pattern') &&
+              !this.createCard.controls['cardNumber'].hasError('required')
+            "
+          >
+            Please enter a valid CardNumber 0000-0000-0000-0000
+          </mat-error>
+          <mat-error
+            *ngIf="this.createCard.controls['cardNumber'].hasError('required')"
+          >
+            CardNumber is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Expire Date</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="expireDate"
+            placeholder="00/2022"
+            pattern="[0-9]{2}\/[0-9]{4}"
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['expireDate'].hasError('pattern') &&
+              !this.createCard.controls['expireDate'].hasError('required')
+            "
+          >
+            Please enter a valid expireDate above 02/2020
+          </mat-error>
+          <mat-error
+            *ngIf="this.createCard.controls['expireDate'].hasError('required')"
+          >
+            expireDate is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Cvv</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="securityCode"
+            placeholder="****"
+            maxlength="4"
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['securityCode'].hasError('min') &&
+              !this.createCard.controls['securityCode'].hasError('required')
+            "
+          >
+            Please enter a valid securityCode above $1
+          </mat-error>
+          <mat-error
+            *ngIf="
+              this.createCard.controls['securityCode'].hasError('required')
+            "
+          >
+            securityCode is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div mat-dialog-actions [align]="'end'">
+          <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+          <button mat-raised-button color="primary" (click)="AddCard()">
+            Add Card
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #_editCardTemplate>
+  <h1 mat-dialog-title>Edit CridtCard</h1>
+  <div mat-dialog-content>
+    <div class="example-container">
+      <form action="" [formGroup]="createCard">
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Card Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="cardName"
+            placeholder="fName lName "
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['cardName'].hasError('min') &&
+              !this.createCard.controls['cardName'].hasError('required')
+            "
+          >
+            Please enter a valid card Name above $1
+          </mat-error>
+          <mat-error
+            *ngIf="this.createCard.controls['cardName'].hasError('required')"
+          >
+            card Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Card Number</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="cardNumber"
+            placeholder="0000-0000-0000-0000"
+            pattern="^[0-9]{4}([-]?[0-9]{4}){3}$"
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['cardNumber'].hasError('pattern') &&
+              !this.createCard.controls['cardNumber'].hasError('required')
+            "
+          >
+            Please enter a valid CardNumber 0000-0000-0000-0000
+          </mat-error>
+          <mat-error
+            *ngIf="this.createCard.controls['cardNumber'].hasError('required')"
+          >
+            CardNumber is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Expire Date</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="expireDate"
+            placeholder="00/2022"
+            pattern="[0-9]{2}\/[0-9]{4}"
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['expireDate'].hasError('pattern') &&
+              !this.createCard.controls['expireDate'].hasError('required')
+            "
+          >
+            Please enter a valid expireDate above 02/2020
+          </mat-error>
+          <mat-error
+            *ngIf="this.createCard.controls['expireDate'].hasError('required')"
+          >
+            expireDate is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Cvv</mat-label>
+          <input
+            type="password"
+            matInput
+            formControlName="securityCode"
+            placeholder="****"
+            maxlength="4"
+          />
+          <mat-error
+            *ngIf="
+              this.createCard.controls['securityCode'].hasError('min') &&
+              !this.createCard.controls['securityCode'].hasError('required')
+            "
+          >
+            Please enter a valid securityCode above $1
+          </mat-error>
+          <mat-error
+            *ngIf="
+              this.createCard.controls['securityCode'].hasError('required')
+            "
+          >
+            securityCode is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <div mat-dialog-actions [align]="'end'">
+          <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+          <button mat-raised-button color="primary" (click)="EditCard()">
+            Edit Card
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

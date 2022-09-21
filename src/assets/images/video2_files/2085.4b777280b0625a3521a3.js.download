@@ -1,0 +1,1 @@
+"use strict";(self.__LOADABLE_LOADED_CHUNKS__=self.__LOADABLE_LOADED_CHUNKS__||[]).push([[2085],{12085:(_,e,s)=>{s.d(e,{s:()=>A});var f=s(16926),t=s(91051),u=s(97913);function A(_){const e=(0,f.fz)(u.Re);(0,t.useEffect)((()=>{e.setPreloadQueue(_)}),[_,e])}}}]);

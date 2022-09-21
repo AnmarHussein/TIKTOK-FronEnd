@@ -1,0 +1,14 @@
+@import url(../../../assets/libs/css/cssUserProfile.css);
+.img-navbar {
+  width: 100%;
+  height: 73px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  margin-bottom: 50px;
+}
+
+.img-SideBar-Captions {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  width: 103%;
+  height: 300px;
+  border-radius: 8px 8px;
+}

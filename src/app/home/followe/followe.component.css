@@ -1,0 +1,16 @@
+.button-follwe {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid rgb(254, 44, 85);
+  color: rgb(254, 44, 85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 2.7rem;
+  width: 5.7rem;
+}
+
+.button-follwe:hover {
+  background-color: rgba(254, 44, 86, 0.05);
+}

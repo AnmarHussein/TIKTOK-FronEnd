@@ -1,0 +1,102 @@
+<div class="">
+  <app-sidebar></app-sidebar>
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div>
+        <div class="main-content">
+          <app-header></app-header>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <div class="row">
+              <div class="col-xl-12 order-xl-1">
+                <div class="card bg-secondary shadow">
+                  <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <h3 class="mb-0">My Followers</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="container">
+                      <div
+                        class="tab-pane fade active show"
+                        id="profile-followers"
+                      >
+                        <div class="list-group">
+                          <div
+                            *ngFor="let followers of this.userProfile.followers"
+                            class="list-group-item d-flex align-items-center"
+                          >
+                            <img
+                              src="../../../../assets/images/{{
+                                followers.imagePath
+                              }}"
+                              alt=""
+                              width="50px"
+                              class="rounded-sm ml-n2"
+                            />
+                            <div class="flex-fill pl-3 pr-3">
+                              <div>
+                                <a href="#" class="text-dark font-weight-600">{{
+                                  followers.userName
+                                }}</a>
+                              </div>
+                              <div class="text-muted fs-13px">
+                                {{ followers.createAt | dateAsAgo }}
+                              </div>
+                            </div>
+                            <button
+                              *ngIf="
+                                followers.followBack == 0 &&
+                                followers.blockedUser == 0
+                              "
+                              (click)="AddFollowe(followers)"
+                              class="btn btn-sm btn-primary"
+                            >
+                              Follow
+                            </button>
+                            <button
+                              (click)="DeletFollowe(followers)"
+                              *ngIf="
+                                followers.followBack == 1 &&
+                                followers.blockedUser == 0
+                              "
+                              class="btn btn-sm btn-primary"
+                              >UnFollow</button
+                            >
+                            <button
+                              href="#"
+                              *ngIf="followers.blockedUser == 0"
+                              class="btn btn-sm btn-primary"
+                              style="background-color: red"
+                              >Blcok</button
+                            >
+                            <button
+                              href="#"
+                              *ngIf="followers.blockedUser == 1"
+                              class="btn btn-sm btn-primary"
+                              style="background-color: red"
+                              >UnBlcok</button
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>

@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~ngx-toastr/toastr.css";
+@import url("https://fonts.googleapis.com/css?family=Proxima+Nova");
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px 8px;
+  background-color: rgba(22, 24, 35, 0.06);
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+[_ngcontent-thf-c62]::-webkit-scrollbar {
+  width: 9px !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

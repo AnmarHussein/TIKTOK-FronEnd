@@ -1,0 +1,73 @@
+<div class="dashboard-main-wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div class="container-fluid dashboard-content">
+        <app-inbox-sidebar></app-inbox-sidebar>
+        <div class="main-content container-fluid p-0">
+          <div class="email-inbox-header">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="email-title">
+                  <span class="icon"><i class="fas fa-inbox"></i></span> Inbox
+                  <span class="new-messages"
+                    >({{ countRead }} Un Read Messages)</span
+                  >
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="email-search">
+                  <div class="input-group input-search">
+                    <input
+                      class="form-control"
+                      type="text"
+                      placeholder="Search mail..."
+                    /><span class="input-group-btn">
+                      <button class="btn btn-secondary" type="button">
+                        <i class="fas fa-search"></i></button
+                    ></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngFor="let mail of AllMail">
+            <div class="email-list" (click)="ShowEmail(mail)">
+              <div
+                class="email-list-item {{
+                  mail.readEmail == 0 ? 'email-list-item--unread' : ''
+                }}"
+              >
+                <div class="email-list-actions">
+                  <a
+                    class="favorite {{ mail.important == 1 ? 'active' : '' }} "
+                    (click)="importantMail(mail.id, mail.important)"
+                    ><span><i class="fas fa-star"></i></span
+                  ></a>
+                </div>
+                <div class="email-list-detail">
+                  <span class="date float-right"
+                    ><span class="icon"><i class="fas fa-paperclip"></i> </span
+                    >{{ mail.createAt | dateAsAgo }}</span
+                  ><span class="from">{{ mail.fullName }}</span>
+                  <p class="msg">
+                    {{ mail.subject }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>

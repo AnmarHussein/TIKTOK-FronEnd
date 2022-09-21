@@ -1,0 +1,141 @@
+<div class="">
+  <app-sidebar></app-sidebar>
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div>
+        <div class="main-content">
+          <app-header></app-header>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <div class="row">
+              <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+                <div class="card card-profile shadow">
+                  <div class="row justify-content-center">
+                    <div class="col-lg-3 order-lg-2">
+                      <div class="card-profile-image">
+                        <a href="#">
+                          <img
+                            src="../../../assets/images/{{
+                              userProfile.UserStatistic.imagePath
+                            }}"
+                            class="rounded-circle"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+                  ></div>
+                  <div class="card-body pt-0 pt-md-4">
+                    <div class="row">
+                      <div class="col">
+                        <div
+                          class="card-profile-stats d-flex justify-content-center mt-md-5"
+                        >
+                          <div>
+                            <span class="heading">{{
+                              userProfile.UserStatistic.countLikeTake
+                            }}</span>
+                            <span class="description">Likes</span>
+                          </div>
+                          <div>
+                            <span class="heading">{{
+                              userProfile.UserStatistic.countFollower
+                            }}</span>
+                            <span class="description">Follower</span>
+                          </div>
+                          <div>
+                            <span class="heading">{{
+                              userProfile.UserStatistic.countFollowing
+                            }}</span>
+                            <span class="description">Following</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <h3>
+                        {{ userProfile.UserStatistic.fullName
+                        }}<span class="font-weight-light">{{
+                          userProfile.UserStatistic.bDate | date
+                        }}</span>
+                      </h3>
+                      <div class="h5 font-weight-300">
+                        <i class="ni location_pin mr-2"></i
+                        >{{ userProfile.UserStatistic.email }}
+                      </div>
+                      <div class="h5 mt-4">
+                        <i class="ni business_briefcase-24 mr-2"></i>
+                        {{ userProfile.UserStatistic.userName }}
+                      </div>
+                      <hr class="my-4" />
+                      <p>
+                        {{ userProfile.UserStatistic.title }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 order-xl-1">
+                <div class="card bg-secondary shadow">
+                  <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <h3 class="mb-0">My Sattistic</h3>
+                      </div>
+                      <div class="col-4 text-right">
+                        <a
+                          routerLink="/user/editProfile"
+                          class="btn btn-sm btn-primary"
+                          >Settings</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                          <div class="counter">
+                            <span class="counter-value">{{
+                              userProfile.UserStatistic.countVideos
+                            }}</span>
+                            <h3>Videos</h3>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                          <div class="counter red">
+                            <span class="counter-value">{{
+                              userProfile.UserStatistic.countVisacard
+                            }}</span>
+                            <h3>VisaCard</h3>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                          <div class="counter red">
+                            <span class="counter-value">{{
+                              userProfile.UserStatistic.countReplay
+                            }}</span>
+                            <h3>Replay</h3>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>

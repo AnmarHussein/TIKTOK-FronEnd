@@ -1,0 +1,20 @@
+<div class="card">
+  <h5 class="card-header">Top User Follower</h5>
+  <div class="card-body p-0">
+    <ul class="social-sales list-group list-group-flush">
+      <li
+        *ngFor="let user of top5users"
+        class="list-group-item social-sales-content"
+      >
+        <span
+          ><img
+            src="../../../../assets/images/{{ user.imagepath }}"
+            style="height: 40px; width: 40px; border-radius: 100%" /></span
+        ><span class="social-sales-name"> {{ user.fullname }}</span
+        ><span class="social-sales-count text-dark"
+          >{{ user.count }} Follower</span
+        >
+      </li>
+    </ul>
+  </div>
+</div>

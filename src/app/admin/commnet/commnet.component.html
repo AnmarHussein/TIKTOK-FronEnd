@@ -1,0 +1,103 @@
+<div class="comment bootdey">
+  <div class="col-md-12 bootstrap snippets">
+    <div class="panel">
+      <div class="panel-body">
+        <!-- Newsfeed Content -->
+        <!--===================================================-->
+        <div
+          *ngFor="let replay of profile.ReplayAll"
+          class="media-block pad-all"
+        >
+          <a class="media-left" href="#"
+            ><img
+              class="img-circle img-sm"
+              alt="Profile Picture"
+              src="../../../assets/images/{{ replay.imageUserPath }}"
+          /></a>
+          <div class="media-body">
+            <div class="mar-btm">
+              <a class="btn-link text-semibold media-heading box-inline">{{
+                replay.userName
+              }}</a>
+              <p class="text-muted text-sm">
+                <i class="fa fa-clock-o" aria-hidden="true"></i> -
+                {{ replay.createAt | dateAsAgo }}
+              </p>
+            </div>
+            <p>{{ replay.message }}</p>
+            <img
+              *ngIf="replay.imagePath"
+              class="img-responsive thumbnail image-replay"
+              src="../../../assets/images/{{ replay.imagePath }}"
+              alt="Image"
+            />
+            <video
+              *ngIf="replay.videoPath"
+              class="video-replay"
+              controls
+              disablepictureinpicture
+              controlslist="nodownload noplaybackrate"
+            >
+              <source
+                src="../../../assets/videos/{{ replay.videoPath }}"
+                type="video/mp4"
+              />
+            </video>
+            <div class="pad-ver">
+              <button mat-button color="warn" (click)="DeleteReplay(replay)">
+                Delete
+              </button>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div *ngIf="profile.ReplayAll <= 0">No Comment In This Video</div>
+        <!--===================================================-->
+        <!-- End Newsfeed Content -->
+      </div>
+    </div>
+    <div class="panel" style="top: 309px">
+      <div class="panel-body">
+        <input
+          class="form-control"
+          placeholder="What are you thinking?"
+          type="text"
+          [formControl]="message"
+        />
+        <div class="mar-top clearfix">
+          <button
+            mat-icon-button
+            type="submit"
+            class="insert-comment"
+            (click)="AddReplay()"
+          >
+            <mat-icon color="primary"> insert_comment</mat-icon>
+          </button>
+          <div class="box">
+            <input
+              #file
+              type="file"
+              id="file-5"
+              class="inputfile inputfile-4"
+              (change)="UploadFile(file.files)"
+            />
+            <label for="file-5"
+              ><figure>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="17"
+                  viewBox="0 0 20 17"
+                >
+                  <path
+                    d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"
+                  />
+                </svg>
+              </figure>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

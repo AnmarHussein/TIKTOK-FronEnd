@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div class="live">
+  <main class="container-live">
+    <div id="room__container">
+      <section id="members__container">
+        <div id="members__header">
+          <p>Total Member</p>
+          <strong id="members__count">{{ totalMember.value }}</strong>
+        </div>
+
+        <div id="member__list"></div>
+      </section>
+
+      <app-stream
+        [RoomName]="RoomName"
+        [userId]="userId"
+        [typeLive]="typeLive"
+        (leaveCannel)="leaveCannel()"
+      ></app-stream>
+
+      <section id="messages__container">
+        <div id="messages"></div>
+
+        <form
+          id="message__form"
+          [formGroup]="createMessage"
+          (ngSubmit)="SnedMessage()"
+        >
+          <input
+            type="text"
+            formControlName="message"
+            placeholder="Send a message...."
+          />
+        </form>
+      </section>
+    </div>
+  </main>
+</div>

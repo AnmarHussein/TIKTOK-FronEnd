@@ -1,0 +1,365 @@
+<div class="dashboard-main-wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader  -->
+        <!-- ============================================================== -->
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+              <h3 class="mb-2">Dashboard Admin</h3>
+              <p class="pageheader-text">
+                Proin placerat ante duiullam scelerisque a velit ac porta, fusce
+                sit amet vestibulum mi. Morbi lobortis pulvinar quam.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-12 order-xl-1">
+              <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                  <div class="row align-items-center">
+                    <div class="col-8">
+                      <h3 class="mb-0">Edit HomePage</h3>
+                    </div>
+                    <div class="col-4 text-right">
+                      <a class="btn btn-sm btn-primary">Save</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="editHomePage">
+                    <h6 class="heading-small text-muted mb-4">NavBar</h6>
+                    <img
+                      class="img-navbar"
+                      src="../../../assets/learn/imageLearnNavBar.png"
+                    />
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-email"
+                              >Logo</label
+                            >
+                            <input
+                              type="file"
+                              id="input-email"
+                              class="form-control form-control-alternative"
+                              #file
+                              (change)="UploadLogoHome(file.files)"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-email">
+                              Nav Button 1</label
+                            >
+                            <input
+                              type="text"
+                              id="input-email"
+                              class="form-control form-control-alternative"
+                              placeholder="Live"
+                              formControlName="navButton1"
+                              matInput
+                            />
+                            <mat-error
+                              *ngIf="
+                                this.editHomePage.controls[
+                                  'navButton1'
+                                ].hasError('required')
+                              "
+                            >
+                              This is Requierd
+                            </mat-error>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-email"
+                              >Nav Button 2</label
+                            >
+                            <input
+                              type="text"
+                              id="input-email"
+                              class="form-control form-control-alternative"
+                              placeholder="Log in"
+                              formControlName="navButton2"
+                              matInput
+                            />
+                            <mat-error
+                              *ngIf="
+                                this.editHomePage.controls[
+                                  'navButton2'
+                                ].hasError('required')
+                              "
+                            >
+                              This is Requierd
+                            </mat-error>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="form-control-label" for="input-email"
+                              >Copy Rigth</label
+                            >
+                            <input
+                              type="text"
+                              id="input-email"
+                              class="form-control form-control-alternative"
+                              placeholder="2022 Is A good Year  "
+                              formControlName="copyRigth"
+                              matInput
+                            />
+                            <mat-error
+                              *ngIf="
+                                this.editHomePage.controls[
+                                  'copyRigth'
+                                ].hasError('required')
+                              "
+                            >
+                              This is Requierd
+                            </mat-error>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <hr class="my-4" />
+                    <!-- Description -->
+                    <h6 class="heading-small text-muted mb-4">
+                      SideBar => Captions
+                    </h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <img
+                            class="img-SideBar-Captions"
+                            src="../../../assets/learn/SideBar Captions.png"
+                          />
+                        </div>
+                        <div class="col-md-8">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label
+                                  class="form-control-label"
+                                  for="input-email"
+                                  >Side Caption 1</label
+                                >
+                                <input
+                                  type="text"
+                                  id="input-email"
+                                  class="form-control form-control-alternative"
+                                  placeholder="For You"
+                                  formControlName="captur1"
+                                  matInput
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    this.editHomePage.controls[
+                                      'captur1'
+                                    ].hasError('required')
+                                  "
+                                >
+                                  This is Requierd
+                                </mat-error>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label
+                                  class="form-control-label"
+                                  for="input-email"
+                                  >Side Caption 2</label
+                                >
+                                <input
+                                  type="text"
+                                  id="input-email"
+                                  class="form-control form-control-alternative"
+                                  placeholder="Log in"
+                                  formControlName="captur2"
+                                  matInput
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    this.editHomePage.controls[
+                                      'captur2'
+                                    ].hasError('required')
+                                  "
+                                >
+                                  This is Requierd
+                                </mat-error>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label
+                                  class="form-control-label"
+                                  for="input-email"
+                                  >Side Caption 3</label
+                                >
+                                <input
+                                  type="text"
+                                  id="input-email"
+                                  class="form-control form-control-alternative"
+                                  placeholder="Log in"
+                                  formControlName="captur3"
+                                  matInput
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    this.editHomePage.controls[
+                                      'captur3'
+                                    ].hasError('required')
+                                  "
+                                >
+                                  This is Requierd
+                                </mat-error>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-4" />
+                    <!-- Description -->
+                    <h6 class="heading-small text-muted mb-4">
+                      SideBar => Login And Top
+                    </h6>
+                    <div class="pl-lg-4">
+                      <div class="row">
+                        <div class="col-md-7">
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label
+                                  class="form-control-label"
+                                  for="input-email"
+                                  >Side Pargraf 1</label
+                                >
+                                <input
+                                  type="text"
+                                  id="input-email"
+                                  class="form-control form-control-alternative"
+                                  placeholder="For You"
+                                  formControlName="pargraf1"
+                                  matInput
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    this.editHomePage.controls[
+                                      'pargraf1'
+                                    ].hasError('required')
+                                  "
+                                >
+                                  This is Requierd
+                                </mat-error>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label
+                                  class="form-control-label"
+                                  for="input-email"
+                                  >Side Button 3</label
+                                >
+                                <input
+                                  type="text"
+                                  id="input-email"
+                                  class="form-control form-control-alternative"
+                                  placeholder="Log in"
+                                  formControlName="button1"
+                                  matInput
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    this.editHomePage.controls[
+                                      'button1'
+                                    ].hasError('required')
+                                  "
+                                >
+                                  This is Requierd
+                                </mat-error>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12">
+                              <div class="form-group">
+                                <label
+                                  class="form-control-label"
+                                  for="input-email"
+                                  >Side Pargraf 2</label
+                                >
+                                <input
+                                  type="text"
+                                  id="input-email"
+                                  class="form-control form-control-alternative"
+                                  placeholder="Log in"
+                                  formControlName="pargraf2"
+                                  matInput
+                                />
+                                <mat-error
+                                  *ngIf="
+                                    this.editHomePage.controls[
+                                      'pargraf2'
+                                    ].hasError('required')
+                                  "
+                                >
+                                  This is Requierd
+                                </mat-error>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-5">
+                          <img
+                            class="img-SideBar-Captions"
+                            src="../../../assets/learn/Login .png"
+                          />
+                          <br />
+                          <div class="d-flex justify-content-end mt-5">
+                            <a
+                              class="btn btn-sm btn-primary"
+                              (click)="EditHomePage()"
+                              >Save</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <app-footer></app-footer>
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>

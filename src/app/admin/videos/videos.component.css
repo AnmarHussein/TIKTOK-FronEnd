@@ -1,0 +1,236 @@
+table {
+  width: 100%;
+}
+.mat-dialog-content {
+  overflow: visible;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.img-table-users {
+  padding: 7px;
+  width: 72px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.image-poster-table {
+  padding: 10px;
+  width: 180px;
+  height: 128px;
+}
+
+.video-show-template {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.admin-video .post {
+  margin-right: 4rem;
+  height: 40rem;
+  width: 72%;
+  /* margin-bottom: -7px; */
+  border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.admin-video .post-info {
+  display: flex;
+  justify-content: space-between;
+}
+.admin-video .post-info > .user {
+  display: flex;
+}
+.admin-video .post-info > .user:hover {
+  background-color: transparent;
+}
+
+.admin-video .post-info > .user > img {
+  height: 60px;
+  width: 60px;
+}
+
+.admin-video .post-info > .user > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  margin-left: 0.5rem;
+  margin-bottom: 7px;
+  margin-left: 20px;
+  margin-top: 13px;
+}
+
+.admin-video .post-info > .user > div > h6 {
+  font-size: 1rem;
+}
+
+.admin-video .post-info > .user > div > h6:hover {
+  text-decoration: underline;
+}
+
+.admin-video .post-info > .user > div > p {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.admin-video .post-info > button {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid rgb(254, 44, 85);
+  color: rgb(254, 44, 85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 1.7rem;
+  width: 5.7rem;
+}
+
+.admin-video .post-info > button:hover {
+  background-color: rgba(254, 44, 86, 0.05);
+}
+
+.admin-video .post-content {
+  display: flex;
+  width: 20rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.admin-video .post-content > video {
+  width: 70%;
+  border-radius: 10px;
+  margin-left: 5rem;
+}
+
+.admin-video .video-icons {
+  position: absolute;
+  top: 41%;
+  left: 102%;
+}
+
+.admin-video .video-icons > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+}
+
+.admin-video .video-icons > a > i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(245, 245, 245);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.admin-video .video-icons > a > i:hover {
+  background-color: rgb(230, 230, 230);
+}
+
+.admin-video .video-icons > a > span {
+  font-size: 0.7rem;
+  color: rgb(80, 80, 80);
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.admin-video video::-webkit-media-controls-fullscreen-button,
+.admin-video video::-webkit-media-controls-current-time-display,
+.admin-video video::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+  }
+  .admin-video .search-bar {
+    display: none;
+  }
+
+  .admin-video .menu {
+    z-index: 10;
+  }
+
+  .admin-video .left {
+    flex: 0.1;
+    border: none;
+    border-right: 1px solid rgb(200, 200, 200);
+  }
+
+  .admin-video .left:hover {
+    overflow: hidden;
+  }
+
+  .admin-video .right {
+    flex: 0.9;
+  }
+
+  .admin-video .btns {
+    margin: 0;
+    align-items: center;
+  }
+
+  .admin-video .btns > a > span {
+    display: none;
+  }
+
+  .admin-video .login {
+    display: none;
+  }
+
+  .admin-video .accounts {
+    margin: 0;
+    border: none;
+    align-items: center;
+  }
+
+  .admin-video .accounts > p {
+    display: none;
+  }
+
+  .admin-video .accounts > .user > h6 {
+    display: none;
+  }
+
+  .admin-video .user {
+    padding-left: 0;
+  }
+
+  .admin-video .tags {
+    display: none;
+  }
+
+  .admin-video .links {
+    display: none;
+  }
+
+  .admin-video .post-content > video {
+    margin-left: 2rem;
+  }
+
+  .admin-video .video-icons {
+    left: 100%;
+  }
+}

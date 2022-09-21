@@ -1,0 +1,295 @@
+@import url(../../../assets/libs/css/cssUserProfile.css);
+
+.profile-video .post {
+  height: 30rem;
+  width: 109%;
+  /* margin-bottom: -7px; */
+  border-bottom: 1px solid rgb(200, 200, 200);
+  display: flex;
+  flex-wrap: wrap !important;
+}
+
+.profile-video .post-info {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-video .post-info > .user {
+  display: flex;
+}
+.profile-video .post-info > .user:hover {
+  background-color: transparent;
+}
+
+.profile-video .post-info > .user > img {
+  height: 60px;
+  width: 60px;
+}
+
+.profile-video .post-info > .user > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  margin-bottom: 7px;
+  margin-top: 13px;
+}
+
+.profile-video .post-info > .user > div > h6 {
+  font-size: 1rem;
+}
+
+.profile-video .post-info > .user > div > h6:hover {
+  text-decoration: underline;
+}
+
+.profile-video .post-info > .user > div > p {
+  color: #000 !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.profile-video .post-info > button {
+  margin-top: 1rem;
+  background-color: transparent;
+  border: 1px solid rgb(254, 44, 85);
+  color: rgb(254, 44, 85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 5px;
+  height: 1.7rem;
+  width: 5.7rem;
+}
+
+.profile-video .post-info > button:hover {
+  background-color: rgba(254, 44, 86, 0.05);
+}
+
+.profile-video .post-content {
+  display: flex;
+  width: 20rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.profile-video .post-content > video {
+  width: 198.708px;
+  height: 379.24px;
+  border-radius: 10px;
+}
+
+.profile-video .video-icons {
+  position: absolute;
+  top: 40%;
+  left: 74%;
+}
+
+.profile-video .video-icons > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+}
+
+.profile-video .video-icons > a > i {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.profile-video .video-icons > a > span {
+  font-size: 0.7rem;
+  color: rgb(80, 80, 80);
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+  margin-right: 7px;
+}
+
+.profile-video video::-webkit-media-controls-fullscreen-button,
+.profile-video video::-webkit-media-controls-current-time-display,
+.profile-video video::-webkit-media-controls-time-remaining-display {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  body {
+    overflow-x: hidden;
+  }
+  .profile-video .search-bar {
+    display: none;
+  }
+
+  .profile-video .menu {
+    z-index: 10;
+  }
+
+  .profile-video .left {
+    flex: 0.1;
+    border: none;
+    border-right: 1px solid rgb(200, 200, 200);
+  }
+
+  .profile-video .left:hover {
+    overflow: hidden;
+  }
+
+  .profile-video .right {
+    flex: 0.9;
+  }
+
+  .profile-video .btns {
+    margin: 0;
+    align-items: center;
+  }
+
+  .profile-video .btns > a > span {
+    display: none;
+  }
+
+  .profile-video .login {
+    display: none;
+  }
+
+  .profile-video .accounts {
+    margin: 0;
+    border: none;
+    align-items: center;
+  }
+
+  .profile-video .accounts > p {
+    display: none;
+  }
+
+  .profile-video .user p {
+    color: #000 !important;
+  }
+
+  .profile-video .accounts > .user > h6 {
+    display: none;
+  }
+
+  .profile-video .user {
+    padding-left: 0;
+  }
+
+  .profile-video .tags {
+    display: none;
+  }
+
+  .profile-video .links {
+    display: none;
+  }
+
+  .profile-video .post-content > video {
+    margin-left: 2rem;
+  }
+
+  .profile-video .video-icons {
+    left: 100%;
+  }
+}
+.btn-shaeredli {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: 7px;
+}
+.icon-shaeredli {
+  text-align: center;
+  margin-right: -13px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+/*imput file */
+/********** File Input Style starts here ********/
+.comment .inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.comment .inputfile + label {
+  max-width: 80%;
+  font-size: 1.25rem;
+  /* 20px */
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.625rem 1.25rem;
+  /* 10px 20px */
+}
+
+.comment .no-js .inputfile + label {
+  display: none;
+}
+
+.comment .inputfile:focus + label,
+.comment .inputfile.has-focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.comment .inputfile + label svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: currentColor;
+  margin-top: -0.25em;
+  /* 4px */
+  margin-right: 0.25em;
+  /* 4px */
+}
+
+/* style 4 */
+
+.comment .inputfile-4 + label {
+  color: #d3394c;
+}
+
+.comment .inputfile-4:focus + label,
+.comment .inputfile-4.has-focus + label,
+.comment .inputfile-4 + label:hover {
+  color: #722040;
+}
+
+.comment .inputfile-4 + label figure {
+  width: 100px;
+  height: 150px;
+  background-color: #d3394c;
+  display: block;
+  padding: 2px;
+  margin: 0 auto 10px;
+}
+
+.comment .inputfile-4:focus + label figure,
+.comment .inputfile-4.has-focus + label figure,
+.comment .inputfile-4 + label:hover figure {
+  background-color: #722040;
+}
+
+.comment .inputfile-4 + label svg {
+  width: 100%;
+  height: 100%;
+  fill: #f1e5e6;
+}
+.label-input {
+  background: #d3394c;
+  color: #fff !important;
+  border-radius: 8px;
+  border: none;
+  box-shadow: rgb(136 165 191 / 48%) 6px 2px 16px 0px,
+    rgb(255 255 255 / 80%) -6px -2px 16px 0px;
+}

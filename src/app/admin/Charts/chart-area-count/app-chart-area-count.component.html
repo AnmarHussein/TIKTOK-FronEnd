@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-between">
+      <div>
+        <h1 class="text-muted">
+          <span class="" *ngIf="tableAndCount">{{ tableAndCount.name }}</span>
+        </h1>
+      </div>
+      <h1 class="mb-1" *ngIf="tableAndCount">{{ tableAndCount.countrow }}</h1>
+    </div>
+  </div>
+  <div id="sparkline-revenue2">
+    <apx-chart
+      *ngIf="chartOptionsArea"
+      [series]="chartOptionsArea.series"
+      [chart]="chartOptionsArea.chart"
+      [xaxis]="chartOptionsArea.xaxis"
+      [dataLabels]="chartOptionsArea.dataLabels"
+      [grid]="chartOptionsArea.grid"
+      [stroke]="chartOptionsArea.stroke"
+      [title]="chartOptionsArea.title"
+    ></apx-chart>
+  </div>
+</div>

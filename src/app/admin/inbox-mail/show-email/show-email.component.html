@@ -1,0 +1,86 @@
+<div class="dashboard-main-wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div class="container-fluid dashboard-content">
+        <app-inbox-sidebar></app-inbox-sidebar>
+        <div class="main-content container-fluid p-0" *ngIf="this.mail">
+          <div class="email-head">
+            <div class="email-head-sender">
+              <div class="date">
+                {{ mail.createAt | date }}
+                <span class="icons">
+                  <a
+                    *ngIf="this.mail.deleteAt == null"
+                    (click)="TrashMailUpdate(mail)"
+                    class="ml-1 icon"
+                    ><i class="fas fa-trash"></i
+                  ></a>
+                  <a
+                    *ngIf="this.mail.deleteAt != null"
+                    (click)="RemoverTrashMailUpdate(mail)"
+                    style="color: red"
+                    class="ml-1 icon"
+                    ><i class="fas fa-trash"></i
+                  ></a>
+                </span>
+              </div>
+
+              <div class="sender">
+                <a
+                  class="active"
+                  (click)="importantMail(mail.id, mail.important)"
+                  ><span class="icon"
+                    ><i
+                      class="fas fa-star fas-sm star-icon {{
+                        mail.important == 1 ? 'active11' : ''
+                      }}"
+                    ></i></span
+                ></a>
+                <a href="#">{{ mail.fullName }}</a> to <a href="#">me</a>
+                <div class="actions">
+                  <a
+                    class="icon toggle-dropdown"
+                    href="#"
+                    data-toggle="dropdown"
+                    ><i class="fas fa-caret-down"></i
+                  ></a>
+                  <div class="dropdown-menu" role="menu">
+                    <a class="dropdown-item" href="#">Mark as read</a
+                    ><a class="dropdown-item" href="#">Mark as unread</a
+                    ><a class="dropdown-item" href="#">Spam</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="email-body">
+            <p>{{ mail.subject }}</p>
+            <p>
+              {{ mail.message }}
+            </p>
+            <p>
+              <strong>Regards</strong> <br />
+              {{ mail.fullName }}
+              {{ mail.email }}
+            </p>
+          </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-primary" (click)="RouteToSentEmail(mail)">Send Email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>

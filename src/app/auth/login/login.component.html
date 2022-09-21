@@ -1,0 +1,231 @@
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="Login">
+    <div class="container">
+      <div class="heading-rigester">TikTok Login</div>
+      <div class="Regster-div">
+        <form *ngIf="!FogetPasswrd" [formGroup]="authForm" (ngSubmit)="Login()">
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <label class="label" for="input-first-name">Enter Name </label>
+              <input
+                type="text"
+                class="rigester-input mt-1"
+                placeholder="UserName  *"
+                formControlName="userName"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-lg-12 mb-4">
+            <label class="label" for="input-first-name">Password </label>
+            <a (click)="ForgetPassWrdShow()" class="forgetPassWord"
+              >Forget Password</a
+            >
+            <input
+              type="Password"
+              class="rigester-input mt-1"
+              placeholder="Password"
+              formControlName="password"
+              required
+            />
+          </div>
+          <hr />
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <button
+                [disabled]="
+                  !authForm.controls['userName'].valid ||
+                  !authForm.controls['password'].valid
+                "
+                (click)="Login()"
+                type="submit"
+                class="btn-sinup {{
+                  !authForm.controls['userName'].valid ||
+                  !authForm.controls['password'].valid
+                    ? 'bg-color-disable'
+                    : 'bg-color-ok'
+                }} "
+              >
+                Sig Up
+              </button>
+            </div>
+          </div>
+        </form>
+        <form
+          *ngIf="FogetPasswrd"
+          [formGroup]="authForm"
+          (ngSubmit)="ForgetPasswrd()"
+        >
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <label class="label" for="input-first-name">Enter Email </label>
+              <input
+                type="email"
+                class="rigester-input mt-1"
+                placeholder="email  *"
+                formControlName="email"
+                required
+              />
+            </div>
+          </div>
+          <hr />
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <button
+                type="submit"
+                class="btn-sinup {{
+                  !authForm.controls['email'].valid
+                    ? 'bg-color-disable'
+                    : 'bg-color-ok'
+                }} "
+                [disabled]="!authForm.controls['email'].valid"
+              >
+                Forget Passwrd
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Rigeser">
+    <!-- Page content -->
+    <div class="container">
+      <div class="heading-rigester">TikTok Rigester</div>
+      <div class="Regster-div">
+        <form [formGroup]="authForm" (ngSubmit)="Rigester()">
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <label class="label" for="input-first-name">Enter Name </label>
+              <input
+                type="text"
+                class="rigester-input mt-1"
+                placeholder="UserName  *"
+                formControlName="userName"
+                required
+              />
+              <input
+                type="text"
+                class="rigester-input mt-1"
+                placeholder="Full Name *"
+                formControlName="fullName"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-lg-12 mb-4">
+            <label class="label" for="input-first-name">Enter Email </label>
+            <input
+              type="text"
+              class="rigester-input mt-1"
+              placeholder="Email"
+              formControlName="email"
+              required
+            />
+            <input
+              type="Password"
+              class="rigester-input mt-1"
+              placeholder="Password"
+              formControlName="password"
+              required
+              (keyup)="CheckPassWord()"
+            />
+            <div *ngIf="this.authForm.controls['password'].value">
+              <p class="valid-Passwrd">Your Password Must Have .?</p>
+              <div
+                class="erorr-checed {{
+                  checkLength ? 'color-sucess' : 'color-erorr'
+                }}"
+              >
+                <i class="fa fa-times" aria-hidden="true"></i> 8 to 20
+                characters
+              </div>
+              <div
+                class="erorr-checed {{
+                  checkChar ? 'color-sucess' : 'color-erorr'
+                }}"
+              >
+                <i class="fa fa-check" aria-hidden="true"></i> Letters, numbers,
+                and special characters
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12 mb-4">
+            <label class="label" for="input-first-name"
+              >Chose Birth Date
+            </label>
+            <input
+              [matDatepicker]="picker"
+              class="rigester-input"
+              placeholder="MM/DD/YYYY"
+              formControlName="bDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+              class="datepicet-pos"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <span class="datepicet-span"
+              >Your birthday won't be shown publicly.</span
+            >
+          </div>
+          <div class="col-lg-12 mb-4">
+            <mat-radio-group
+              aria-label="Select Gender"
+              formControlName="genderId"
+            >
+              <label class="label">Select Gender : </label>
+              <mat-radio-button [value]="1">Mael</mat-radio-button>
+              <mat-radio-button [value]="2">Femael</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="col-lg-12 mb-4">
+            <div class="form-group">
+              <label class="label" for="input-email">Image</label>
+              <input
+                type="file"
+                id="input-email"
+                style="padding: 10px; box-shadow: none"
+                class="rigester-input"
+                #file
+                (change)="UploadImageUser(file.files)"
+                accept="image/png, image/gif, image/jpeg,image/jpg"
+              />
+            </div>
+          </div>
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <label class="label" for="input-first-name">Title </label>
+              <input
+                type="text"
+                class="rigester-input"
+                placeholder="Describe OF Channel"
+                formControlName="title"
+              />
+            </div>
+          </div>
+          <hr />
+          <p class="terms-Service">
+            By continuing, you agree to TikTok s<a href="">Terms of Service</a>
+            and confirm that you have read TikTok s M
+            <a hreh="">Privacy Policy</a>.
+          </p>
+          <hr />
+          <div class="col-lg-12 mb-4">
+            <div class="form-group focused">
+              <button
+                type="submit"
+                class="btn-sinup {{
+                  !authForm.valid ? 'bg-color-disable' : 'bg-color-ok'
+                }} "
+              >
+                Sig Up
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>

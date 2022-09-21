@@ -1,0 +1,215 @@
+<div class="container-nav">
+  <app-navbar></app-navbar>
+  <main>
+    <div class="left">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="right">
+      <!-- ============================================================== -->
+      <!-- wrapper  -->
+      <!-- ============================================================== -->
+      <div class="dashboard-wrapper">
+        <div class="dashboard-finance">
+          <div>
+            <div class="main-content">
+              <!-- Header -->
+              <!-- Header -->
+              <div
+                class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+                style="
+                  min-height: 600px;
+                  background-image: url(../../../assets/images/081ea3a6-5644-48c1-b6e1-c04022f9f312_Gypsy.png);
+                  background-size: cover;
+                  background-position: center;
+                "
+              >
+                <!-- Mask -->
+                <span class="mask bg-gradient-default opacity-8"></span>
+                <!-- Header container -->
+                <div class="container-fluid d-flex align-items-center">
+                  <div class="row">
+                    <div class="col-lg-7 col-md-10">
+                      <h1
+                        *ngIf="home.userPage != undefined"
+                        class="display-2 text-white"
+                      >
+                        Hello @{{ home.userPage.userName }}
+                      </h1>
+                      <p class="text-white mt-0 mb-5">
+                        This is your profile page. You can see the progress
+                        you've made with your work and manage your projects or
+                        assigned tasks
+                      </p>
+                      <a routerLink="/home" class="btn btn-info"
+                        >Make Your Day</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Page content -->
+              <div class="container-fluid mt--7">
+                <div class="row">
+                  <div class="col-xl-12 order-xl-2 mb-5 mb-xl-0">
+                    <div class="card card-profile shadow">
+                      <div class="row justify-content-center">
+                        <div class="col-lg-3 order-lg-2">
+                          <div class="card-profile-image">
+                            <a href="#">
+                              <img
+                                *ngIf="home.userPage != undefined"
+                                src="../../../assets/images/{{
+                                  home.userPage.imagePath
+                                }}"
+                                class="rounded-circle"
+                              />
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4"
+                      ></div>
+                      <div class="card-body pt-0 pt-md-4">
+                        <div class="row">
+                          <div class="col">
+                            <div
+                              class="card-profile-stats d-flex justify-content-center mt-md-5"
+                            >
+                              <div>
+                                <span
+                                  class="heading"
+                                  *ngIf="home.userPage != undefined"
+                                  >{{ home.userPage.countLikeTake }}</span
+                                >
+                                <span class="description">Likes</span>
+                              </div>
+                              <div>
+                                <span
+                                  class="heading"
+                                  *ngIf="home.userPage != undefined"
+                                  >{{ home.userPage.countFollower }}</span
+                                >
+                                <span class="description">Follower</span>
+                              </div>
+                              <div>
+                                <span
+                                  class="heading"
+                                  *ngIf="home.userPage != undefined"
+                                  >{{ home.userPage.countFollowing }}</span
+                                >
+                                <span class="description">Following</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-center">
+                          <h3 *ngIf="home.userPage != undefined">
+                            {{ home.userPage.fullName }}
+                          </h3>
+                          <div class="h5 mt-4">
+                            <i class="ni business_briefcase-24 mr-2"></i>
+                            <span
+                              class="font-weight-light"
+                              *ngIf="home.userPage != undefined"
+                              >{{ home.userPage.bDate | date }}</span
+                            >
+                          </div>
+                          <div class="d-flex justify-content-end">
+                            <app-followe
+                              *ngIf="home.userPage != undefined"
+                              [followBack]="home.userPage.followBack"
+                              [userId]="home.userPage.id"
+                            ></app-followe>
+                          </div>
+                          <hr class="my-4" />
+                          <p *ngIf="home.userPage != undefined">
+                            {{ home.userPage.title }}
+                          </p>
+                          <hr class="my-4" />
+                        </div>
+                        <div class="col-xl-12 order-xl-1">
+                          <div class="card bg-secondary shadow">
+                            <div class="card-header bg-white border-0">
+                              <div class="row align-items-center">
+                                <div class="col-8">
+                                  <h3
+                                    class="mb-0"
+                                    *ngIf="home.userPage != undefined"
+                                  >
+                                    Videos For @{{ home.userPage.userName }}
+                                  </h3>
+                                </div>
+                                <div class="col-4 text-right">
+                                  <a
+                                    class="btn btn-sm btn-primary"
+                                    *ngIf="home.userPage != undefined"
+                                    >{{ home.userPage.countVideos }}</a
+                                  >
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card-body">
+                              <div class="row">
+                                <div
+                                  *ngFor="let video of home.videoUserPage"
+                                  class="col-6"
+                                >
+                                  <div class="post">
+                                    <div class="post-content">
+                                      <video
+                                        muted
+                                        controls
+                                        disablepictureinpicture
+                                        controlslist="nodownload noplaybackrate"
+                                      >
+                                        <source
+                                          src="../../../assets/videos/{{
+                                            video.videoPath
+                                          }}"
+                                          type="video/mp4"
+                                        />
+                                      </video>
+
+                                      <div class="video-icons">
+                                        <app-likes
+                                          [countLike]="video.countLike"
+                                          [videoid]="video.id"
+                                          [LikeInVideo]="video.likeinvideo"
+                                        ></app-likes>
+                                        <a (click)="OpenDialogComment(video.id)"
+                                          ><i
+                                            class="fas fa-comment-dots fa-lg"
+                                          ></i
+                                          ><span>{{
+                                            video.countReplay
+                                          }}</span></a
+                                        >
+                                        <a href="#"
+                                          ><i class="fas fa-share fa-lg"></i>
+                                          <span></span
+                                        ></a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end wrapper  -->
+    <!-- ============================================================== -->
+  </main>
+</div>

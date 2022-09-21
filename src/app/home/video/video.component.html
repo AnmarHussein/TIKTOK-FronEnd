@@ -1,0 +1,49 @@
+<div class="home-video">
+  <div class="post" *ngFor="let video of home.VideoHome">
+    <div class="post-info">
+      <div class="user">
+        <img src="../../../assets/images/{{ video.imagePath }}" alt="avatar" />
+        <div>
+          <h6 (click)="ShowUserPage(video.userId)">{{ video.userName }}</h6>
+          <p>{{ video.title }}</p>
+        </div>
+      </div>
+      <app-followe
+        [followBack]="video.followBack"
+        [userId]="video.userId"
+      ></app-followe>
+    </div>
+    <div class="post-content">
+      <video
+        muted
+        controls
+        disablepictureinpicture
+        controlslist="nodownload noplaybackrate"
+      >
+        <source
+          src="../../../assets/videos/{{ video.videoPath }}"
+          type="video/mp4"
+        />
+      </video>
+
+      <div class="video-icons">
+        <app-likes
+          [countLike]="video.countLike"
+          [videoid]="video.id"
+          [LikeInVideo]="video.likeInVideo"
+        ></app-likes>
+        <a *ngIf="!auth.isUserAuthntication()" (click)="OpenLoginForm()"
+          ><i class="fas fa-comment-dots fa-lg"></i
+          ><span>{{ video.countReplay }}</span></a
+        >
+        <a
+          *ngIf="auth.isUserAuthntication()"
+          (click)="OpenDialogComment(video.id)"
+          ><i class="fas fa-comment-dots fa-lg"></i
+          ><span>{{ video.countReplay }}</span></a
+        >
+        <a href="#"><i class="fas fa-share fa-lg"></i> <span></span></a>
+      </div>
+    </div>
+  </div>
+</div>

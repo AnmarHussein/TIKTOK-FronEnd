@@ -1,0 +1,24 @@
+<div
+  *ngFor="let like of profile.LikeAll"
+  class="tab-pane fade active show"
+  id="profile-followers"
+>
+  <div class="list-group">
+    <div class="list-group-item d-flex align-items-center">
+      <img
+        src="../../../assets/images/{{ like.imageUserPath }}"
+        alt=""
+        width="50px"
+        class="rounded-sm ml-n2"
+      />
+      <div class="flex-fill pl-3 pr-3">
+        <div>
+          <a href="#" class="text-dark font-weight-600">
+            {{ like.userName }}
+          </a>
+        </div>
+      </div>
+      <div class="btn btn-outline-primary">{{ like.createat | dateAsAgo }}</div>
+    </div>
+  </div>
+</div>

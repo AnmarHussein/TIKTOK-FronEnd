@@ -1,0 +1,313 @@
+<div class="">
+  <app-sidebar></app-sidebar>
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div>
+        <div class="main-content">
+          <app-header></app-header>
+          <!-- Page content -->
+          <div class="container-fluid mt--7">
+            <div class="row">
+              <div class="col-xl-12 order-xl-1">
+                <div class="card shadow">
+                  <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                      <div class="col-8">
+                        <h3 class="mb-0">My Videos</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <mat-stepper
+                      orientation="vertical"
+                      [linear]="true"
+                      #stepper
+                    >
+                      <mat-step>
+                        <ng-template matStepLabel
+                          >The Video Select To Promoet</ng-template
+                        >
+                        <div class="Video-step-one">
+                          <div class="post">
+                            <div class="post-header">
+                              <div class="author">
+                                <img
+                                  src="../../../assets/images/{{
+                                    video.imagePath
+                                  }}"
+                                  alt=""
+                                />
+                              </div>
+                              <div class="meta">
+                                <div class="name">{{ video.userName }}</div>
+                                <div class="location">
+                                  <span class="f-right">{{
+                                    video.createAt | dateAsAgo
+                                  }}</span>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="post-body">
+                              <video
+                                muted
+                                controls
+                                disablepictureinpicture
+                                controlslist="nodownload noplaybackrate"
+                              >
+                                <source
+                                  src="../../../assets/videos/{{
+                                    video.videoPath
+                                  }}"
+                                  type="video/mp4"
+                                />
+                              </video>
+                              <div class="content">
+                                <p>
+                                  {{ video.title }}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                          <button
+                            mat-button
+                            matStepperNext
+                            class="btn btn-primary"
+                          >
+                            Next
+                          </button>
+                        </div>
+                      </mat-step>
+                      <mat-step>
+                        <ng-template matStepLabel>Select Promote </ng-template>
+                        <div>
+                          <div class="demo">
+                            <div class="container">
+                              <div class="row">
+                                <div
+                                  *ngFor="
+                                    let ptype of promoteType.promoteTypeToSelect
+                                  "
+                                  class="col-md-4 col-sm-6 me-2"
+                                >
+                                  <div class="pricingTable green">
+                                    <div class="pricingTable-header">
+                                      <i class="fa fa-adjust"></i>
+                                      <div class="price-value">
+                                        {{ ptype.price | currency }}
+                                        <span class="month">per month</span>
+                                      </div>
+                                    </div>
+                                    <h3 class="heading">
+                                      {{ ptype.name }}
+                                    </h3>
+
+                                    <div class="pricingTable-signup">
+                                      <button
+                                        matStepperNext
+                                        (click)="TakePrometType(ptype)"
+                                      >
+                                        Select
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end">
+                            <button
+                              mat-button
+                              matStepperPrevious
+                              class="btn btn-info"
+                            >
+                              Back
+                            </button>
+                          </div>
+                        </div>
+                      </mat-step>
+                      <mat-step>
+                        <ng-template matStepLabel>Make Payments </ng-template>
+                        <mat-tab-group>
+                          <mat-tab label="CardNumber">
+                            <form [formGroup]="createPromote">
+                              <div class="col-lg-6 mt-3">
+                                <div class="form-group">
+                                  <label
+                                    class="form-control-label"
+                                    for="input-email"
+                                    >Card Number</label
+                                  >
+                                  <input
+                                    type="password"
+                                    id="input-email"
+                                    class="form-control form-control-alternative"
+                                    placeholder="0000-0000-0000-0000"
+                                    formControlName="cardNumber"
+                                  />
+                                  <p
+                                    *ngIf="
+                                      createPromote.controls[
+                                        'cardNumber'
+                                      ].hasError('pattern')
+                                    "
+                                  >
+                                    the pattern must be 0000-0000-0000-0000
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="col-lg-6 mt-3">
+                                <div class="form-group">
+                                  <label
+                                    class="form-control-label"
+                                    for="input-email"
+                                    >CVV</label
+                                  >
+                                  <input
+                                    type="password"
+                                    class="form-control form-control-alternative"
+                                    placeholder="0000"
+                                    formControlName="securityCode"
+                                    minlength="4"
+                                    maxlength="4"
+                                  />
+                                </div>
+                              </div>
+                              <div class="d-flex justify-content-end">
+                                <button
+                                  class="btn btn-info"
+                                  mat-button
+                                  matStepperPrevious
+                                >
+                                  Back
+                                </button>
+                                <button
+                                  [disabled]="!createPromote.valid"
+                                  mat-button
+                                  (click)="AddPromote()"
+                                  class="btn btn-primary"
+                                >
+                                  Add Promote
+                                </button>
+                              </div>
+                            </form>
+                          </mat-tab>
+                          <mat-tab label="Add New Card">
+                            <div class="Add-payment">
+                              <div class="container-fluid">
+                                <div class="row d-flex justify-content-center">
+                                  <div class="col-sm-12">
+                                    <div class="card mx-auto">
+                                      <p class="heading">PAYMENT DETAILS</p>
+                                      <form
+                                        [formGroup]="createCard"
+                                        class="card-details"
+                                      >
+                                        <div class="form-group mb-0">
+                                          <p class="text-warning mb-0">
+                                            Card Number
+                                          </p>
+                                          <input
+                                            type="text"
+                                            formControlName="cardNumber"
+                                            placeholder="1234-5678-9012-3457"
+                                            size="17"
+                                            minlength="19"
+                                            maxlength="19"
+                                            required
+                                          />
+                                          <img
+                                            src="https://img.icons8.com/color/48/000000/visa.png"
+                                            width="64px"
+                                            height="60px"
+                                          />
+                                        </div>
+
+                                        <div class="form-group">
+                                          <p class="text-warning mb-0">
+                                            Cardholder's Name
+                                          </p>
+                                          <input
+                                            type="text"
+                                            formControlName="cardName"
+                                            placeholder="Name"
+                                            size="17"
+                                            required
+                                          />
+                                        </div>
+                                        <div class="form-group pt-2">
+                                          <div class="row d-flex">
+                                            <div class="col-sm-4">
+                                              <p class="text-warning mb-0">
+                                                Expiration
+                                              </p>
+                                              <input
+                                                type="text"
+                                                formControlName="expireDate"
+                                                placeholder="MM/YYYY"
+                                                size="7"
+                                                minlength="7"
+                                                maxlength="7"
+                                              />
+                                            </div>
+                                            <div class="col-sm-4">
+                                              <p class="text-warning mb-0">
+                                                Cvv
+                                              </p>
+                                              <input
+                                                type="password"
+                                                formControlName="securityCode"
+                                                placeholder="&#9679;&#9679;&#9679;&#9679;"
+                                                size="2"
+                                                minlength="4"
+                                                maxlength="4"
+                                              />
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                              <button
+                                class="btn btn-info"
+                                mat-button
+                                matStepperPrevious
+                              >
+                                Back
+                              </button>
+                              <button
+                                [disabled]="!createCard.valid"
+                                mat-button
+                                (click)="AddPromote()"
+                                class="btn btn-primary"
+                              >
+                                Add Promote
+                              </button>
+                            </div>
+                          </mat-tab>
+                        </mat-tab-group>
+                      </mat-step>
+                    </mat-stepper>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <app-footer></app-footer>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>

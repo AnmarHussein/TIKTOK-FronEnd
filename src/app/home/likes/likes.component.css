@@ -1,0 +1,21 @@
+.colo-red {
+  color: red;
+}
+
+#iconId {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(245, 245, 245);
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+.span-Like {
+  display: flex;
+  justify-content: center;
+  font-size: 0.7rem;
+  color: rgb(80, 80, 80);
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}

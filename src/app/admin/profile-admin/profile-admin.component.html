@@ -1,0 +1,262 @@
+<div class="dashboard-main-wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div class="container-fluid dashboard-content">
+        <!-- ============================================================== -->
+        <!-- pageheader  -->
+        <!-- ============================================================== -->
+        <div class="row">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+              <h3 class="mb-2">Dashboard Admin</h3>
+              <p class="pageheader-text">
+                Proin placerat ante duiullam scelerisque a velit ac porta, fusce
+                sit amet vestibulum mi. Morbi lobortis pulvinar quam.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- end pageheader  -->
+        <!-- ============================================================== -->
+        <div class="container" *ngIf="users.userInfo">
+          <div class="profile">
+            <div class="profile-header">
+              <div class="profile-header-cover"></div>
+              <div class="profile-header-content">
+                <div class="profile-header-img">
+                  <img
+                    src="../../../assets/images/{{ users.userInfo.imagePath }}"
+                    alt=""
+                  />
+                </div>
+                <h1>@{{ users.userInfo.userName }}</h1>
+              </div>
+            </div>
+
+            <div class="profile-container">
+              <div class="profile-content">
+                <mat-tab-group mat-align-tabs="start">
+                  <mat-tab label="Information">
+                    <div class="panel">
+                      <div class="bio-graph-heading">
+                        {{ users.userInfo.title }}
+                      </div>
+                      <div class="panel-body bio-graph-info">
+                        <div class="bio-row">
+                          <p>
+                            <span>Full Name </span>:
+                            {{ users.userInfo.fullName }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>User Name </span>:
+                            {{ users.userInfo.userName }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>Gender </span>:{{
+                              users.userInfo.genderId ? "Meal" : "Femael"
+                            }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p>
+                            <span>Birthday</span>:
+                            {{ users.userInfo.bDate | date }}
+                          </p>
+                        </div>
+                        <div class="bio-row">
+                          <p><span>Email </span>: {{ users.userInfo.email }}</p>
+                        </div>
+                      </div>
+                      <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="OpenDialogEditUserProfile(users.userInfo)"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Reset Password">
+                    <h1 class="block-effect" style="--td: 1.2s">
+                      <div
+                        class="block-reveal"
+                        style="
+                          --bc: linear-gradient(
+                            90deg,
+                            rgba(252, 63, 158, 1) 0%,
+                            rgba(148, 165, 209, 1) 57%,
+                            rgba(80, 232, 243, 1) 100%
+                          );
+                          --d: 0.5s;
+                        "
+                      >
+                        Change Password
+                      </div>
+                    </h1>
+                  </mat-tab>
+                </mat-tab-group>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <app-footer></app-footer>
+  </div>
+  <!-- ============================================================== -->
+  <!-- end wrapper  -->
+  <!-- ============================================================== -->
+</div>
+<ng-template #editUserProfile>
+  <h1 mat-dialog-title>Edit Users</h1>
+  <div mat-dialog-content>
+    <div class="example-container">
+      <form action="" [formGroup]="editUser">
+        <!-- This IS Full NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Full Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="fullName"
+            placeholder="Plz Enter The Full Name "
+          />
+          <mat-error
+            *ngIf="
+              this.editUser.controls['fullName'].hasError('minlength') &&
+              !this.editUser.controls['fullName'].hasError('required')
+            "
+          >
+            Please enter a valid Full Name above Charactirs 5
+          </mat-error>
+          <mat-error
+            *ngIf="this.editUser.controls['fullName'].hasError('required')"
+          >
+            Full Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS User NAme  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>User Name</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="userName"
+            placeholder="Plz Enter The Full Name "
+          />
+          <mat-error
+            *ngIf="
+              this.editUser.controls['userName'].hasError('minlength') &&
+              !this.editUser.controls['userName'].hasError('required')
+            "
+          >
+            Please enter a valid User Name above Charchtirs 5
+          </mat-error>
+          <mat-error
+            *ngIf="this.editUser.controls['userName'].hasError('required')"
+          >
+            User Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS Email  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="email"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-hint>Errors appear instantly!</mat-hint>
+          <mat-error
+            *ngIf="
+              this.editUser.controls['email'].hasError('email') &&
+              !this.editUser.controls['email'].hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error
+            *ngIf="this.editUser.controls['email'].hasError('required')"
+          >
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS title  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>title</mat-label>
+          <input
+            type="text"
+            matInput
+            formControlName="title"
+            placeholder="Tilte To Users"
+          />
+          <mat-error
+            *ngIf="
+              this.editUser.controls['title'].hasError('minlength') &&
+              !this.editUser.controls['title'].hasError('required')
+            "
+          >
+            Please enter a valid Title
+          </mat-error>
+          <mat-error
+            *ngIf="this.editUser.controls['title'].hasError('required')"
+          >
+            Title is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <!-- This IS Bdate  -->
+        <mat-form-field class="example-full-width mb-2" appearance="fill">
+          <mat-label>Choose a Barit Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="bDate" />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- This IS Gender  -->
+        <mat-radio-group formControlName="genderId" aria-label="Select Gender">
+          Select Gender
+          <mat-radio-button class="ml-1 mr-3" [value]="1"
+            >Mael</mat-radio-button
+          >
+          <mat-radio-button [value]="2">Femael</mat-radio-button>
+        </mat-radio-group>
+
+        <div class="example-container">
+          <input
+            type="file"
+            #file
+            formControlName="imagePath"
+            (change)="UploadImageUser(file.files)"
+          />
+        </div>
+
+        <div mat-dialog-actions [align]="'end'">
+          <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+          <button mat-raised-button color="primary" (click)="UserEdit()">
+            Edit User
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>

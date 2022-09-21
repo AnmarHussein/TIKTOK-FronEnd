@@ -1,0 +1,140 @@
+<div class="dashboard-main-wrapper">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+
+  <!-- ============================================================== -->
+  <!-- wrapper  -->
+  <!-- ============================================================== -->
+  <div class="dashboard-wrapper">
+    <div class="dashboard-finance">
+      <div class="container-fluid dashboard-content">
+        <app-inbox-sidebar></app-inbox-sidebar>
+        <div class="main-content container-fluid p-0">
+          <div class="email-head">
+            <div class="email-head-title">
+              Compose new message<span class="icon mdi mdi-edit"></span>
+            </div>
+          </div>
+          <form [formGroup]="createContact" (submit)="CreateContact()">
+            <div class="email-compose-fields">
+              <div class="to cc">
+                <div class="form-group row pt-2">
+                  <label class="col-md-1 control-label">To</label>
+                  <div class="col-md-11">
+                    <input
+                      class="form-control"
+                      type="email"
+                      formControlName="email"
+                    />
+                    <span
+                      class="controle-form-erorr"
+                      *ngIf="
+                        this.createContact.controls['email'].hasError(
+                          'email'
+                        ) &&
+                        !this.createContact.controls['email'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      Please enter a valid Email
+                    </span>
+                    <span
+                      class="controle-form-erorr"
+                      *ngIf="
+                        this.createContact.controls['email'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      Email is <strong>required</strong>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="subject">
+                <div class="form-group row pt-2">
+                  <label class="col-md-1 control-label">Subject</label>
+                  <div class="col-md-11">
+                    <input
+                      class="form-control"
+                      type="text"
+                      formControlName="subject"
+                    />
+                    <span
+                      class="controle-form-erorr"
+                      *ngIf="
+                        this.createContact.controls['subject'].hasError(
+                          'minlength'
+                        ) &&
+                        !this.createContact.controls['subject'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      Please enter a valid Min Length 10 Char subject
+                    </span>
+                    <span
+                      class="controle-form-erorr"
+                      *ngIf="
+                        this.createContact.controls['subject'].hasError(
+                          'required'
+                        )
+                      "
+                    >
+                      Subject is <strong>required</strong>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="email editor">
+              <div class="col-md-12 p-0">
+                <div class="form-group">
+                  <label class="control-label sr-only" for="summernote"
+                    >Descriptions
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="summernote"
+                    #summernote
+                    name="editordata"
+                    rows="6"
+                    formControlName="message"
+                    placeholder="Write Descriptions"
+                  ></textarea>
+                  <span
+                    class="controle-form-erorr"
+                    *ngIf="
+                      this.createContact.controls['message'].hasError(
+                        'required'
+                      )
+                    "
+                  >
+                    Mesaage is <strong>required</strong>
+                  </span>
+                </div>
+              </div>
+              <div class="email action-send">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-space" type="submit">
+                      <i class="icon s7-mail"></i> Send
+                    </button>
+                    <button class="btn btn-secondary btn-space" type="button">
+                      <i class="icon s7-close"></i> Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- end wrapper  -->
+<!-- ============================================================== -->
